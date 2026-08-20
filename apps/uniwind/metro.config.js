@@ -29,4 +29,7 @@ const mergedConfigs = mergeConfig(defaultConfig, config)
 
 module.exports = withUniwindConfig(mergedConfigs, {
   cssEntryFile: './global.css',
+  experimental: {
+    optimizeClasslessComponents: true,
+  },
 })

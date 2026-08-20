@@ -2,6 +2,9 @@
 
 Run date: 2026-08-20
 
+Follow-up results for the experimental Metro compile-time optimization are in
+[`experimental-opt-in/README.md`](./experimental-opt-in/README.md).
+
 ## Environment
 
 - Repository commit: `7413dcbef8c0b25654cb2f9f2080d4714331bd89`
