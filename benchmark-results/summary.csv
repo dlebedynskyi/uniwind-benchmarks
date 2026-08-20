@@ -1,0 +1,16 @@
+variant,itemCount,publicNodes,medianMs,medianMsPerNode
+t1-raw-stylesheet,100,201,9.612375,0.04782276
+t1-raw-stylesheet,250,501,21.093667,0.04210313
+t1-raw-stylesheet,500,1001,38.677750,0.03863911
+t1-raw-stylesheet,1000,2001,67.520500,0.03374338
+t1-raw-stylesheet,2000,4001,167.203667,0.04179047
+t2-uniwind-wrapper-stylesheet,100,201,15.208500,0.07566418
+t2-uniwind-wrapper-stylesheet,250,501,33.018750,0.06590569
+t2-uniwind-wrapper-stylesheet,500,1001,56.407292,0.05635094
+t2-uniwind-wrapper-stylesheet,1000,2001,88.517791,0.04423678
+t2-uniwind-wrapper-stylesheet,2000,4001,198.234625,0.04954627
+t3-uniwind-classnames,100,201,11.739542,0.05840568
+t3-uniwind-classnames,250,501,32.271500,0.06441417
+t3-uniwind-classnames,500,1001,54.971042,0.05491613
+t3-uniwind-classnames,1000,2001,90.341208,0.04514803
+t3-uniwind-classnames,2000,4001,237.018000,0.05923969

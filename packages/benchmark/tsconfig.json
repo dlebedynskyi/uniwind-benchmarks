@@ -3,7 +3,10 @@
   "compilerOptions": {
     "composite": true,
     "outDir": "./dist",
-    "rootDir": "./src"
+    "rootDir": "./src",
+    "paths": {
+      "react-native": ["../../apps/stylesheet/node_modules/react-native"]
+    }
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "dist"]

@@ -2,6 +2,9 @@
 
 Benchmark repository for different React Native styling libraries.
 
+The focused Metro-wrapper scaling experiment and raw Android results are in
+[`benchmark-results/README.md`](./benchmark-results/README.md).
+
 iPhone 17 Pro running iOS 26.0 in Release mode.
 Result after opening the app for the second time (cached by the OS).
 

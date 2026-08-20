@@ -1,59 +1,38 @@
 import './global.css'
-import { useBenchmark } from '@uniwind-benchmarks/benchmark'
+import { ScalingBenchmark, renderStyleSheetTree } from '@uniwind-benchmarks/benchmark'
 import { ScrollView, Text, View } from 'react-native'
 
-function App() {
-  const { isComplete, currentRun, totalRuns, average, min, max, itemsCount, renderKey } =
-    useBenchmark()
+type BenchmarkVariant = 'stylesheet' | 'uniwind'
+
+interface AppProps {
+  benchmarkVariant?: BenchmarkVariant
+}
+
+function renderUniwindTree(itemCount: number) {
+  return (
+    <ScrollView
+      contentContainerClassName="gap-2 flex-row flex-wrap"
+      showsVerticalScrollIndicator={false}
+    >
+      {Array.from({ length: itemCount }, (_, index) => (
+        <View
+          key={index}
+          className="w-[32%] h-[100px] rounded-[16px] bg-[#00a8ff] items-center justify-center"
+        >
+          <Text className="text-black text-base font-bold">{index}</Text>
+        </View>
+      ))}
+    </ScrollView>
+  )
+}
+
+function App({ benchmarkVariant = 'stylesheet' }: AppProps) {
+  if (benchmarkVariant === 'uniwind') {
+    return <ScalingBenchmark variant="t3-uniwind-classnames" renderTree={renderUniwindTree} />
+  }
 
   return (
-    <View className="flex-1 mt-25 px-3">
-      <Text className="text-lg text-typography font-bold text-center mb-4">Uniwind Benchmark</Text>
-
-      {!isComplete ? (
-        <View className="p-4 bg-gray rounded-lg mb-4">
-          <Text className="text-base text-typography font-semibold text-center mb-1">
-            Running benchmark...
-          </Text>
-          <Text className="text-base text-typography font-semibold text-center mb-1">
-            Run {currentRun + 1} of {totalRuns}
-          </Text>
-        </View>
-      ) : (
-        <View className="p-4 bg-gray rounded-lg mb-4">
-          <Text className="text-base text-typography font-semibold text-center mb-1">
-            ✓ Benchmark Complete
-          </Text>
-          <Text className="text-base text-typography font-semibold text-center mb-1">
-            Average: {average.toFixed(2)}ms
-          </Text>
-          <Text className="text-base text-typography font-semibold text-center mb-1">
-            Min: {min.toFixed(2)}ms
-          </Text>
-          <Text className="text-base text-typography font-semibold text-center mb-1">
-            Max: {max.toFixed(2)}ms
-          </Text>
-          <Text className="text-[14px] text-typography text-center mt-2">
-            {itemsCount * 2 + 3} views × {totalRuns} runs
-          </Text>
-        </View>
-      )}
-
-      <ScrollView
-        key={renderKey}
-        contentContainerClassName="gap-2 flex-row flex-wrap"
-        showsVerticalScrollIndicator={false}
-      >
-        {Array.from({ length: itemsCount }, (_, index) => (
-          <View
-            key={index}
-            className="w-[32%] h-25 rounded-2xl bg-primary items-center justify-center"
-          >
-            <Text className="text-typography font-bold text-2xl">{index}</Text>
-          </View>
-        ))}
-      </ScrollView>
-    </View>
+    <ScalingBenchmark variant="t2-uniwind-wrapper-stylesheet" renderTree={renderStyleSheetTree} />
   )
 }
 

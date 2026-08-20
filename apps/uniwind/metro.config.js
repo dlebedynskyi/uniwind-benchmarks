@@ -8,7 +8,21 @@ const defaultConfig = getDefaultConfig(__dirname)
 const config = {
   watchFolders: [workspaceRoot],
   resolver: {
-    nodeModulesPaths: ['../../node_modules', './node_modules'],
+    nodeModulesPaths: [
+      path.resolve(__dirname, 'node_modules'),
+      path.resolve(workspaceRoot, 'node_modules'),
+    ],
+    resolveRequest: (context, moduleName, platform) => {
+      if (moduleName === 'react' || moduleName === 'react-native') {
+        return context.resolveRequest(
+          context,
+          require.resolve(moduleName, { paths: [__dirname] }),
+          platform
+        )
+      }
+
+      return context.resolveRequest(context, moduleName, platform)
+    },
   },
 }
 const mergedConfigs = mergeConfig(defaultConfig, config)
