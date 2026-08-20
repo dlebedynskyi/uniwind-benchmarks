@@ -5,7 +5,7 @@ Run date: 2026-08-20
 ## Compared Builds
 
 - Option off: Uniwind `0f8bdcd` (`main`), with the existing resolver-backed wrappers.
-- Option on: Uniwind `8a154f4`, with
+- Option on: Uniwind `72ccce4`, with
   `experimental.optimizeClasslessComponents: true`.
 - Raw baseline: the unchanged React Native StyleSheet app from the same emulator session.
 
