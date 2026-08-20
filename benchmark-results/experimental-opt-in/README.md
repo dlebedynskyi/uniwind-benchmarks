@@ -19,29 +19,41 @@ and checked for the presence or absence of the private raw-component module.
 - Uniwind: `1.11.0`
 - Android release build, Hermes, Fabric/new architecture, arm64
 - Android 15 / API 35 emulator, arm64, 2 vCPUs, 2.5 GB guest RAM
-- 2 warm-up mounts and 7 measured mounts per item count
-- Fresh app process for each variant
+- 12 balanced, interleaved rounds per variant
+- Fresh install and process for each round
+- 2 warm-up mounts and 7 measured mounts per item count and round
+- 84 measured mounts per item count and variant
 
-## Results
+## Android Results
 
-Median mount-to-commit time:
+Times are the median of the 12 independent round medians. Deltas and 95% confidence intervals
+are paired across the 12 balanced rounds.
 
-| Items | Raw StyleSheet | T2 option off | T2 option on | T2 change | T3 option off | T3 option on | T3 change |
-| ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| 100 | 7.19 ms | 13.30 ms | 8.78 ms | -34.0% | 12.21 ms | 11.14 ms | -8.7% |
-| 250 | 14.73 ms | 32.25 ms | 21.47 ms | -33.4% | 31.32 ms | 28.09 ms | -10.3% |
-| 500 | 37.14 ms | 58.63 ms | 38.86 ms | -33.7% | 58.23 ms | 50.99 ms | -12.4% |
-| 1000 | 62.93 ms | 85.05 ms | 69.09 ms | -18.8% | 97.08 ms | 101.27 ms | +4.3% |
-| 2000 | 164.84 ms | 207.59 ms | 158.75 ms | -23.5% | 223.31 ms | 221.86 ms | -0.6% |
+| Items | Raw StyleSheet | Option off | Option on | On vs off | Paired 95% CI |
+| ---: | ---: | ---: | ---: | ---: | ---: |
+| 100 | 10.80 ms | 11.85 ms | 10.45 ms | -5.1% | -3.24 to +2.07 ms |
+| 250 | 18.85 ms | 26.48 ms | 23.69 ms | -17.3% | -7.67 to -2.57 ms |
+| 500 | 38.92 ms | 44.14 ms | 37.44 ms | -16.6% | -16.83 to -1.45 ms |
+| 1000 | 62.77 ms | 86.56 ms | 64.32 ms | -25.8% | -26.88 to -18.36 ms |
+| 2000 | 164.51 ms | 203.16 ms | 163.37 ms | -18.4% | -44.12 to -31.42 ms |
 
-T2 uses the same classless StyleSheet tree in both builds. The option removes most of the
-wrapper-only cost and brings the 1000- and 2000-item results back into the raw React Native range.
+The option is consistently faster than the existing wrapper path from 250 items onward. At 1000
+and 2000 items, it reduces mean paired mount time by 22.62 ms and 37.77 ms respectively.
 
-T3 keeps its className nodes on the existing wrapper path. Its large-tree results are effectively
-unchanged. The smaller T3 improvements include fixed classless benchmark chrome that the transform
-can optimize and normal emulator run variance.
+Option-on and raw React Native are statistically indistinguishable at every measured size: all
+paired 95% confidence intervals include zero. The 2000-item raw result was especially variable,
+with round medians from 153.20 ms to 241.77 ms, so the result supports restoring the raw React
+Native performance range rather than claiming the optimized path is faster.
 
-Raw logs are stored beside this report. `summary.csv` contains the medians and calculated changes.
+The expanded Android data is in:
+
+- `android/summary.csv`: aggregate medians, ranges, paired deltas, and confidence intervals
+- `android/round-medians.csv`: every round median
+- `android/summary.json`: full aggregate data
+- `android/rounds/`: all 36 measured run logs
+
+The five top-level logs are the superseded initial single-round experiment and remain for
+traceability.
 
 ## Opt-In
 
