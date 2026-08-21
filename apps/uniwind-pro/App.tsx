@@ -4,7 +4,7 @@ import { ScrollView, Text, View } from 'react-native'
 
 function App() {
   const { isComplete, currentRun, totalRuns, average, min, max, itemsCount, renderKey } =
-    useBenchmark()
+    useBenchmark('uniwind-pro')
 
   return (
     <View className="flex-1 mt-25 px-3">

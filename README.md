@@ -2,8 +2,8 @@
 
 Benchmark repository for different React Native styling libraries.
 
-The focused Metro-wrapper scaling experiment and raw Android results are in
-[`benchmark-results/README.md`](./benchmark-results/README.md).
+The focused PR 640 app-matrix benchmark, including Android and iOS raw data, is in
+[`benchmark-results/app-matrix/README.md`](./benchmark-results/app-matrix/README.md).
 
 iPhone 17 Pro running iOS 26.0 in Release mode.
 Result after opening the app for the second time (cached by the OS).
@@ -55,6 +55,7 @@ uniwind-benchmarks/
 ├── apps/                    # React Native applications
 │   ├── nativewind4/        # NativeWind v4 benchmark app
 │   ├── nativewind5/        # NativeWind v5 benchmark app
+│   ├── mixed/              # StyleSheet UI with the Uniwind Metro wrapper
 │   ├── stylesheet/         # React Native StyleSheet benchmark app
 │   ├── unistyles3/         # Unistyles v3 benchmark app
 │   ├── uniwind/            # Uniwind benchmark app

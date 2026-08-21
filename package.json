@@ -8,6 +8,10 @@
     "packages/*"
   ],
   "scripts": {
+    "benchmark:build": "node scripts/build-matrix.mjs",
+    "benchmark:run": "node scripts/run-matrix.mjs",
+    "benchmark:summarize": "node scripts/summarize-results.mjs",
+    "benchmark:verify-pr640": "node scripts/verify-pr640.mjs",
     "lint": "biome check .",
     "lint:fix": "biome check --write .",
     "format": "biome format --write .",

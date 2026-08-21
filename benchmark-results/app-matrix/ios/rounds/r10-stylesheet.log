@@ -1,0 +1,4 @@
+# variant=stylesheet
+Filtering the log data using "composedMessage CONTAINS "[UNIWIND_BENCHMARK]""
+2026-08-21 11:20:28.454 I  stylesheet[79001:2e0e80] [com.facebook.react.log:javascript] [UNIWIND_BENCHMARK] {"kind":"result","variant":"stylesheet","itemsCount":1000,"publicNodes":2003,"runs":10,"average":53.60979180037975,"min":50.569000005722046,"max":57.17966701090336,"median":53.35018799453974,"stdDev":2.091660250530138,"count":10,"samplesMs":[52.39766699075699,57.17966701090336,52.86708399653435,55.569333001971245,51.05875000357628,52.12162500619888,53.83329199254513,54.317625001072884,50.569000005722046,56.18387499451637]}
+2026-08-21 11:20:28.454 I  stylesheet[79001:2e0e80] [com.facebook.react.log:javascript] [UNIWIND_BENCHMARK] {"kind":"complete","variant":"stylesheet"}

@@ -27,7 +27,7 @@ export interface UseBenchmarkReturn {
  *
  * @returns Benchmark state and statistics
  */
-export function useBenchmark(): UseBenchmarkReturn {
+export function useBenchmark(variant = 'benchmark'): UseBenchmarkReturn {
   const [measurements, setMeasurements] = useState<number[]>([])
   const [currentRun, setCurrentRun] = useState(0)
   const [isComplete, setIsComplete] = useState(false)
@@ -61,9 +61,21 @@ export function useBenchmark(): UseBenchmarkReturn {
       return () => clearTimeout(timer)
     }
     if (currentRun === BENCHMARK_CONFIG.RUNS && !isComplete) {
+      const result = {
+        kind: 'result',
+        variant,
+        itemsCount: BENCHMARK_CONFIG.ITEMS_COUNT,
+        publicNodes: BENCHMARK_CONFIG.ITEMS_COUNT * 2 + 3,
+        runs: BENCHMARK_CONFIG.RUNS,
+        ...calculateStats(measurements),
+        samplesMs: measurements,
+      }
+
+      console.info(`[UNIWIND_BENCHMARK] ${JSON.stringify(result)}`)
+      console.info(`[UNIWIND_BENCHMARK] ${JSON.stringify({ kind: 'complete', variant })}`)
       setIsComplete(true)
     }
-  }, [currentRun, runBenchmark, isComplete])
+  }, [currentRun, isComplete, measurements, runBenchmark, variant])
 
   const stats = calculateStats(measurements)
 

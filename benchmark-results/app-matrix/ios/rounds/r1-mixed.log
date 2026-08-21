@@ -1,0 +1,4 @@
+# variant=mixed
+Filtering the log data using "composedMessage CONTAINS "[UNIWIND_BENCHMARK]""
+2026-08-21 11:15:30.953 I  mixed[70735:2d922a] [com.facebook.react.log:javascript] [UNIWIND_BENCHMARK] {"kind":"result","variant":"mixed","itemsCount":1000,"publicNodes":2003,"runs":10,"average":85.39014159739017,"min":79.80833299458027,"max":106.54745799303055,"median":82.8833124935627,"stdDev":7.477492577635671,"count":10,"samplesMs":[80.44187499582767,81.82187500596046,83.50133299827576,79.80833299458027,80.83462499082088,82.26529198884964,88.35733300447464,85.41541700065136,106.54745799303055,84.90787500143051]}
+2026-08-21 11:15:30.953 I  mixed[70735:2d922a] [com.facebook.react.log:javascript] [UNIWIND_BENCHMARK] {"kind":"complete","variant":"mixed"}

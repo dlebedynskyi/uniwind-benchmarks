@@ -116,5 +116,3 @@ export function formatMs(ms: number, decimals = 2): string {
 
 // Export the hook
 export { useBenchmark, type UseBenchmarkReturn } from './useBenchmark'
-export { ScalingBenchmark, type ScalingBenchmarkProps } from './ScalingBenchmark'
-export { renderStyleSheetTree } from './StyleSheetTree'

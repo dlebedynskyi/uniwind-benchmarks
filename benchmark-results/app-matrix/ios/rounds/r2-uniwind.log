@@ -1,0 +1,4 @@
+# variant=uniwind
+Filtering the log data using "composedMessage CONTAINS "[UNIWIND_BENCHMARK]""
+2026-08-21 11:16:26.972 I  uniwind[71903:2dab2a] [com.facebook.react.log:javascript] [UNIWIND_BENCHMARK] {"kind":"result","variant":"uniwind","itemsCount":1000,"publicNodes":2003,"runs":10,"average":90.19451670050621,"min":84.36970800161362,"max":96.64212499558926,"median":88.74350050091743,"stdDev":3.714417465127953,"count":10,"samplesMs":[93.0161669999361,88.07225000858307,86.21087498962879,88.92791700363159,96.64212499558926,84.36970800161362,88.45237500965595,93.58879099786282,94.10587500035763,88.55908399820328]}
+2026-08-21 11:16:26.972 I  uniwind[71903:2dab2a] [com.facebook.react.log:javascript] [UNIWIND_BENCHMARK] {"kind":"complete","variant":"uniwind"}
