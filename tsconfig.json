@@ -9,6 +9,11 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "moduleResolution": "bundler",
+    "baseUrl": ".",
+    "paths": {
+      "@uniwind-benchmarks/benchmark": ["packages/benchmark/src/index.ts"],
+      "react-native": ["apps/uniwind-pro/node_modules/react-native"]
+    },
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,

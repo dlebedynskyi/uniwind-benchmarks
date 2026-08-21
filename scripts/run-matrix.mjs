@@ -1,7 +1,7 @@
-import { mkdirSync, writeFileSync } from 'node:fs'
+import { mkdirSync, rmSync, writeFileSync } from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { getRoundOrder } from './matrix.mjs'
+import { DEFAULT_ROUNDS, getRoundOrder } from './matrix.mjs'
 import { run, runStreaming, sleep } from './process.mjs'
 
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
@@ -13,7 +13,7 @@ const readArg = (name, fallback) => {
 
 const platform = readArg('--platform')
 const device = readArg('--device', platform === 'android' ? undefined : 'booted')
-const rounds = Number(readArg('--rounds', '14'))
+const rounds = Number(readArg('--rounds', String(DEFAULT_ROUNDS)))
 const output = path.resolve(
   readArg('--output', path.join(repoRoot, 'benchmark-results/app-matrix', platform ?? 'unknown'))
 )
@@ -25,14 +25,16 @@ const adb =
 
 if (!['android', 'ios'].includes(platform) || !Number.isInteger(rounds) || rounds < 1) {
   throw new Error(
-    'Usage: bun benchmark:run --platform android|ios [--device serial|udid] [--rounds 14] [--output dir]'
+    `Usage: bun benchmark:run --platform android|ios [--device serial|udid] [--rounds ${DEFAULT_ROUNDS}] [--output dir]`
   )
 }
 if (platform === 'android' && !device) {
   throw new Error('Android requires --device <adb serial>.')
 }
 
-mkdirSync(path.join(output, 'rounds'), { recursive: true })
+const roundsDirectory = path.join(output, 'rounds')
+rmSync(roundsDirectory, { recursive: true, force: true })
+mkdirSync(roundsDirectory, { recursive: true })
 
 async function waitForAndroidResult(variant) {
   const deadline = Date.now() + 45_000
@@ -144,7 +146,7 @@ for (let round = 1; round <= rounds; round += 1) {
   for (const variant of order) {
     console.log(`Running ${variant.id}`)
     const log = platform === 'android' ? await runAndroid(variant) : await runIos(variant)
-    writeFileSync(path.join(output, 'rounds', `r${round}-${variant.id}.log`), `${log}\n`)
+    writeFileSync(path.join(roundsDirectory, `r${round}-${variant.id}.log`), `${log}\n`)
   }
 }
 

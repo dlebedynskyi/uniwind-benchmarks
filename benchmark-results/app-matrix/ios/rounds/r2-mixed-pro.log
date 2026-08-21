@@ -1,0 +1,4 @@
+# variant=mixed-pro
+Filtering the log data using "composedMessage CONTAINS "[UNIWIND_BENCHMARK]""
+2026-08-21 12:39:00.515 I  uniwindpro[52836:338b6c] [com.facebook.react.log:javascript] [UNIWIND_BENCHMARK] {"kind":"result","variant":"mixed-pro","itemsCount":1000,"publicNodes":2003,"runs":10,"average":78.03439589887857,"min":70.95412500202656,"max":82.68462499976158,"median":78.28341649472713,"stdDev":3.272384745050556,"count":10,"samplesMs":[70.95412500202656,77.09674999117851,78.51487499475479,78.05195799469948,74.87100000679493,76.80929200351238,80.80345799028873,82.68462499976158,81.85504199564457,78.7028340101242]}
+2026-08-21 12:39:00.515 I  uniwindpro[52836:338b6c] [com.facebook.react.log:javascript] [UNIWIND_BENCHMARK] {"kind":"complete","variant":"mixed-pro"}

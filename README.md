@@ -2,8 +2,9 @@
 
 Benchmark repository for different React Native styling libraries.
 
-The focused PR 640 app-matrix benchmark, including Android and iOS raw data, is in
-[`benchmark-results/app-matrix/README.md`](./benchmark-results/app-matrix/README.md).
+The focused PR 640 app-matrix benchmark is available as a
+[concise summary](./benchmark-results/app-matrix/SUMMARY.md) and
+[full report with Android and iOS raw data](./benchmark-results/app-matrix/README.md).
 
 iPhone 17 Pro running iOS 26.0 in Release mode.
 Result after opening the app for the second time (cached by the OS).

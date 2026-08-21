@@ -31,6 +31,7 @@ for (const variant of selectedVariants) {
   const env = {
     ...process.env,
     UNIWIND_OPTIMIZE_CLASSLESS_COMPONENTS: variant.optimize ? '1' : '0',
+    ...(variant.entryFile ? { ENTRY_FILE: variant.entryFile } : {}),
   }
 
   console.log(`\nBuilding ${platform} ${variant.id}`)
@@ -68,7 +69,11 @@ for (const variant of selectedVariants) {
     })
   }
 
-  const derivedData = path.join(artifactsRoot, 'derived-data', variant.app)
+  const derivedData = path.join(
+    artifactsRoot,
+    'derived-data',
+    variant.iosDerivedDataKey ?? variant.id
+  )
   run(
     'xcodebuild',
     [

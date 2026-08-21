@@ -48,6 +48,10 @@ const confidenceInterval95 = (values) => {
     12: 2.201,
     13: 2.179,
     14: 2.16,
+    15: 2.145,
+    16: 2.131,
+    17: 2.12,
+    18: 2.11,
   }
   const critical = criticalValues[values.length] ?? 1.96
   const margin = critical * (standardDeviation(values) / Math.sqrt(values.length))
@@ -87,6 +91,7 @@ const summary = variants.map((variant) => {
 const comparisons = [
   ['mixed', 'mixed-pr640'],
   ['uniwind', 'uniwind-pr640'],
+  ['mixed-pro', 'mixed-pro-pr640'],
   ['uniwind-pro', 'uniwind-pro-pr640'],
 ].map(([off, on]) => {
   const offByRound = new Map(
